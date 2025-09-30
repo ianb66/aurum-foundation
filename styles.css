@@ -258,10 +258,9 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .risk-disclosure {
-        font-size: 0.7rem;
+    .hero h1 {
+        font-size: 1.8rem;
     }
-}
     
     .hero .subtitle {
         font-size: 1.1rem;
