@@ -491,5 +491,43 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+    // Video Modal functionality
+    const watchVideoBtn = document.getElementById('watchVideoBtn');
+    const videoModal = document.getElementById('videoModal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+
+    if (watchVideoBtn && videoModal) {
+        // Open modal
+        watchVideoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            videoModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close modal
+        function closeModal() {
+            videoModal.classList.add('hidden');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            
+            // Stop video when modal closes
+            const iframe = videoModal.querySelector('iframe');
+            if (iframe) {
+                const iframeSrc = iframe.src;
+                iframe.src = iframeSrc; // Reset iframe to stop video
+            }
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    }
+});
 </body>
 </html>
