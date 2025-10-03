@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 Processing...
             `;
             
-            // Simulate API call - in real implementation, you'd send to your backend
+            // Simulate API call
             setTimeout(() => {
                 // Show success message
                 emailForm.style.display = 'none';
@@ -456,33 +456,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Scroll to success message
                 successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 
-                // Reset form state (optional - if you want to keep it hidden)
-                // submitButton.disabled = false;
-                // buttonText.innerHTML = originalText;
-                
                 console.log('Email submitted:', email);
                 
-                // Here you would typically send the email to your backend
-                // Example:
-                // fetch('https://your-backend.com/subscribe', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ email: email })
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     // Handle success
-                //     emailForm.style.display = 'none';
-                //     successMessage.classList.remove('hidden');
-                // })
-                // .catch(error => {
-                //     // Handle error
-                //     alert('Something went wrong. Please try again.');
-                //     submitButton.disabled = false;
-                //     buttonText.innerHTML = originalText;
-                // });
-                
-            }, 1500); // 1.5 second delay to simulate API call
+            }, 1500);
             
         });
     }
@@ -491,6 +467,33 @@ document.addEventListener('DOMContentLoaded', function() {
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+    
+    // Add click handler for the Access Now button in success message
+    if (successMessage) {
+        const accessNowButton = successMessage.querySelector('.success-cta');
+        if (accessNowButton) {
+            accessNowButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.getAttribute('href');
+                console.log('Redirecting to:', url);
+                
+                // Add a loading state to the button
+                const originalText = this.innerHTML;
+                this.innerHTML = 'Redirecting...';
+                this.style.opacity = '0.7';
+                
+                // Redirect after a brief delay for better UX
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                    // Reset button after redirect
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.opacity = '1';
+                    }, 1000);
+                }, 500);
+            });
+        }
     }
     
     // Add hover effects for interactive elements
