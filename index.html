@@ -408,5 +408,73 @@
     </footer>
 
     <script src="script.js"></script>
+    // Navigation scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Form submission handler
+document.getElementById('email-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const emailInput = document.getElementById('email');
+    const buttonText = document.getElementById('button-text');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const successMessage = document.getElementById('success-message');
+    
+    const email = emailInput.value;
+    
+    if (!email) return;
+    
+    // Show loading state
+    submitButton.disabled = true;
+    buttonText.innerHTML = `
+        <div class="loading-spinner"></div>
+        Processing...
+    `;
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Show success message
+    form.style.display = 'none';
+    successMessage.classList.remove('hidden');
+    
+    // Reset form (optional)
+    emailInput.value = '';
+});
+
+// Add hover effects for interactive elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Add hover effects to feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.05)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Add hover effects to stat items
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.05)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
+        });
+    });
+});
 </body>
 </html>
