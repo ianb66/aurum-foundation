@@ -194,30 +194,121 @@ body {
     font-size: 1.1rem;
 }
 
-/* Trust Section */
+/* Trust & Security Section */
 .trust-section {
-    padding: 80px 20px;
-    background: white;
+    padding: 100px 20px;
+    background: #f8fafc;
     text-align: center;
 }
 
-.trust-section h2 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
+.trust-subtitle {
+    font-size: 1.4rem;
+    color: #4a5568;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.security-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.security-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.security-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.security-icon {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+.security-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
     color: #2d3748;
     font-weight: 700;
 }
 
-.partners-logo {
-    max-width: 800px;
-    margin: 0 auto;
-    opacity: 0.7;
+.security-card p {
+    color: #718096;
+    line-height: 1.6;
+    font-size: 1.1rem;
 }
 
-.partners-logo img {
-    max-width: 100%;
-    height: auto;
+.exchange-partners {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    max-width: 600px;
+    margin: 0 auto;
 }
+
+.partners-title {
+    font-size: 1.3rem;
+    color: #4a5568;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.exchange-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.exchange-name {
+    background: linear-gradient(135deg, #0866ff 0%, #004ecc 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(8, 102, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .security-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .exchange-logos {
+        gap: 15px;
+    }
+    
+    .exchange-name {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .exchange-partners {
+        padding: 30px 20px;
+    }
+    
+    .trust-subtitle {
+        font-size: 1.2rem;
+    }
 
 /* Final CTA */
 .final-cta {
@@ -310,115 +401,5 @@ body {
     .risk-disclosure {
         font-size: 0.7rem;
         padding: 15px 10px 0;
-    }
-    /* Trust & Security Section */
-.trust-section {
-    padding: 100px 20px;
-    background: #f8fafc;
-    text-align: center;
-}
-
-.trust-subtitle {
-    font-size: 1.3rem;
-    color: #4a5568;
-    margin-bottom: 60px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-}
-
-.security-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.security-card {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.security-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.security-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.security-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: #2d3748;
-    font-weight: 700;
-}
-
-.security-card p {
-    color: #718096;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-.exchange-partners {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.partners-title {
-    font-size: 1.1rem;
-    color: #4a5568;
-    margin-bottom: 25px;
-    font-weight: 600;
-}
-
-.exchange-logos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.exchange-name {
-    background: linear-gradient(135deg, #0866ff 0%, #004ecc 100%);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 10px rgba(8, 102, 255, 0.2);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .security-features {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .exchange-logos {
-        gap: 15px;
-    }
-    
-    .exchange-name {
-        padding: 10px 20px;
-        font-size: 0.8rem;
-    }
-    
-    .exchange-partners {
-        padding: 30px 20px;
     }
 }
