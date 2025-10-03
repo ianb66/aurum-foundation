@@ -285,31 +285,6 @@ body {
     font-size: 1.1rem;
     box-shadow: 0 4px 15px rgba(8, 102, 255, 0.3);
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .security-features {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .exchange-logos {
-        gap: 15px;
-    }
-    
-    .exchange-name {
-        padding: 12px 20px;
-        font-size: 1rem;
-    }
-    
-    .exchange-partners {
-        padding: 30px 20px;
-    }
-    
-    .trust-subtitle {
-        font-size: 1.2rem;
-    }
-
 /* Final CTA */
 .final-cta {
     padding: 100px 20px;
