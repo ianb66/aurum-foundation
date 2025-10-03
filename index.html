@@ -82,9 +82,9 @@
                         </span>
                     </a>
                     <a href="#" class="cta-secondary" id="watchVideoBtn">
-    Watch Video
-    <i class="lucide lucide-sparkles"></i>
-</a>
+                        Watch Video
+                        <i class="lucide lucide-sparkles"></i>
+                    </a>
                 </div>
 
                 <!-- Trust indicators -->
@@ -335,39 +335,39 @@
                         </p>
 
                         <form id="email-form" class="email-form" action="https://formspree.io/f/mblzyeka" method="POST">
-    <div class="form-group">
-        <input type="email" id="email" name="email" placeholder="Enter your email address" required class="email-input">
-        <button type="submit" class="submit-button">
-            <span id="button-text">
-                Get Access
-                <i class="lucide lucide-arrow-right"></i>
-            </span>
-        </button>
-    </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required class="email-input">
+                                <button type="submit" class="submit-button">
+                                    <span id="button-text">
+                                        Get Access
+                                        <i class="lucide lucide-arrow-right"></i>
+                                    </span>
+                                </button>
+                            </div>
 
-    <!-- Hidden field to track source -->
-    <input type="hidden" name="_subject" value="New Aurum Signup!">
-    <input type="hidden" name="_replyto" value="%email%">
-    
-    <div class="form-features">
-        <div class="feature">
-            <i class="lucide lucide-check-circle"></i>
-            <span>No credit card required</span>
-        </div>
-        <div class="feature">
-            <i class="lucide lucide-check-circle"></i>
-            <span>Setup in 5 minutes</span>
-        </div>
-        <div class="feature">
-            <i class="lucide lucide-check-circle"></i>
-            <span>Withdraw anytime</span>
-        </div>
-    </div>
+                            <!-- Hidden field to track source -->
+                            <input type="hidden" name="_subject" value="New Aurum Signup!">
+                            <input type="hidden" name="_replyto" value="%email%">
+                            
+                            <div class="form-features">
+                                <div class="feature">
+                                    <i class="lucide lucide-check-circle"></i>
+                                    <span>No credit card required</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="lucide lucide-check-circle"></i>
+                                    <span>Setup in 5 minutes</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="lucide lucide-check-circle"></i>
+                                    <span>Withdraw anytime</span>
+                                </div>
+                            </div>
 
-    <p class="form-note">
-        By signing up, you'll receive exclusive updates and early access. We respect your privacy.
-    </p>
-</form>
+                            <p class="form-note">
+                                By signing up, you'll receive exclusive updates and early access. We respect your privacy.
+                            </p>
+                        </form>
 
                         <div id="success-message" class="success-message hidden">
                             <div class="success-icon">
@@ -411,123 +411,159 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        // Form submission handler for Formspree
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Page loaded - JavaScript is working!');
-    
-    const emailForm = document.getElementById('email-form');
-    const successMessage = document.getElementById('success-message');
-    
-    if (emailForm && successMessage) {
-        emailForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('Form submitted to Formspree!');
-            
-            const emailInput = document.getElementById('email');
-            const submitButton = this.querySelector('button[type="submit"]');
-            const buttonText = document.getElementById('button-text');
-            
-            const email = emailInput.value.trim();
-            
-            // Basic email validation
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            console.log('Valid email:', email);
-            
-            // Show loading state
-            submitButton.disabled = true;
-            const originalText = buttonText.innerHTML;
-            buttonText.innerHTML = 'Processing...';
-            
-            // Submit to Formspree
-            const formData = new FormData(emailForm);
-            
-            fetch(emailForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success - show success message
-                    emailForm.style.display = 'none';
-                    successMessage.classList.remove('hidden');
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    console.log('Form submitted successfully to Formspree!');
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Something went wrong. Please try again.');
-                // Reset button
-                submitButton.disabled = false;
-                buttonText.innerHTML = originalText;
-            });
-        });
-    }
-    
-    // Rest of your existing code for navigation and smooth scrolling...
-    // (keep the window scroll event and smooth scrolling code)
-});
-</script>
     <!-- Video Modal -->
-<div id="videoModal" class="video-modal hidden">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-        <button class="modal-close">
-            <i class="lucide lucide-x"></i>
-        </button>
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/hep0eYXJY8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div id="videoModal" class="video-modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="lucide lucide-x"></i>
+            </button>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hep0eYXJY8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
-</div>
-    // Video Modal functionality
-    const watchVideoBtn = document.getElementById('watchVideoBtn');
-    const videoModal = document.getElementById('videoModal');
-    const modalClose = document.querySelector('.modal-close');
-    const modalOverlay = document.querySelector('.modal-overlay');
 
-    if (watchVideoBtn && videoModal) {
-        // Open modal
-        watchVideoBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            videoModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-
-        // Close modal
-        function closeModal() {
-            videoModal.classList.add('hidden');
-            document.body.style.overflow = ''; // Re-enable scrolling
-            
-            // Stop video when modal closes
-            const iframe = videoModal.querySelector('iframe');
-            if (iframe) {
-                const iframeSrc = iframe.src;
-                iframe.src = iframeSrc; // Reset iframe to stop video
-            }
+    <!-- JavaScript -->
+    <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
+    });
 
-        modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', closeModal);
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
-                closeModal();
-            }
+    // Form submission handler for Formspree
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded - JavaScript is working!');
+        
+        const emailForm = document.getElementById('email-form');
+        const successMessage = document.getElementById('success-message');
+        
+        if (emailForm && successMessage) {
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Form submitted to Formspree!');
+                
+                const emailInput = document.getElementById('email');
+                const submitButton = this.querySelector('button[type="submit"]');
+                const buttonText = document.getElementById('button-text');
+                
+                const email = emailInput.value.trim();
+                
+                // Basic email validation
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                console.log('Valid email:', email);
+                
+                // Show loading state
+                submitButton.disabled = true;
+                const originalText = buttonText.innerHTML;
+                buttonText.innerHTML = 'Processing...';
+                
+                // Submit to Formspree
+                const formData = new FormData(emailForm);
+                
+                fetch(emailForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Success - show success message
+                        emailForm.style.display = 'none';
+                        successMessage.classList.remove('hidden');
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        console.log('Form submitted successfully to Formspree!');
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again.');
+                    // Reset button
+                    submitButton.disabled = false;
+                    buttonText.innerHTML = originalText;
+                });
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-    }
-});
+        
+        // Video Modal functionality
+        const watchVideoBtn = document.getElementById('watchVideoBtn');
+        const videoModal = document.getElementById('videoModal');
+
+        if (watchVideoBtn && videoModal) {
+            console.log('Video modal elements found');
+            
+            // Open modal
+            watchVideoBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Watch Video button clicked');
+                videoModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close modal functions
+            function closeModal() {
+                videoModal.classList.add('hidden');
+                document.body.style.overflow = '';
+                
+                // Stop video
+                const iframe = videoModal.querySelector('iframe');
+                if (iframe) {
+                    iframe.src = iframe.src; // Reset to stop video
+                }
+            }
+
+            // Close when clicking X
+            const modalClose = videoModal.querySelector('.modal-close');
+            if (modalClose) {
+                modalClose.addEventListener('click', closeModal);
+            }
+
+            // Close when clicking overlay
+            const modalOverlay = videoModal.querySelector('.modal-overlay');
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', closeModal);
+            }
+
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        } else {
+            console.log('Video modal elements NOT found:', {
+                watchVideoBtn: !!watchVideoBtn,
+                videoModal: !!videoModal
+            });
+        }
+    });
+    </script>
 </body>
 </html>
