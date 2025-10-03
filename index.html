@@ -334,36 +334,40 @@
                             Join and get <span class="highlight-blue">exclusive bonuses</span> + priority access to all new features.
                         </p>
 
-                        <form id="email-form" class="email-form">
-                            <div class="form-group">
-                                <input type="email" id="email" placeholder="Enter your email address" required class="email-input">
-                                <button type="submit" class="submit-button">
-                                    <span id="button-text">
-                                        Get Access
-                                        <i class="lucide lucide-arrow-right"></i>
-                                    </span>
-                                </button>
-                            </div>
+                        <form id="email-form" class="email-form" action="https://formspree.io/f/mblzyeka" method="POST">
+    <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required class="email-input">
+        <button type="submit" class="submit-button">
+            <span id="button-text">
+                Get Access
+                <i class="lucide lucide-arrow-right"></i>
+            </span>
+        </button>
+    </div>
 
-                            <div class="form-features">
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>No credit card required</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>Setup in 5 minutes</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>Withdraw anytime</span>
-                                </div>
-                            </div>
+    <!-- Hidden field to track source -->
+    <input type="hidden" name="_subject" value="New Aurum Signup!">
+    <input type="hidden" name="_replyto" value="%email%">
+    
+    <div class="form-features">
+        <div class="feature">
+            <i class="lucide lucide-check-circle"></i>
+            <span>No credit card required</span>
+        </div>
+        <div class="feature">
+            <i class="lucide lucide-check-circle"></i>
+            <span>Setup in 5 minutes</span>
+        </div>
+        <div class="feature">
+            <i class="lucide lucide-check-circle"></i>
+            <span>Withdraw anytime</span>
+        </div>
+    </div>
 
-                            <p class="form-note">
-                                By signing up, you'll receive exclusive updates and early access. We respect your privacy.
-                            </p>
-                        </form>
+    <p class="form-note">
+        By signing up, you'll receive exclusive updates and early access. We respect your privacy.
+    </p>
+</form>
 
                         <div id="success-message" class="success-message hidden">
                             <div class="success-icon">
@@ -409,36 +413,70 @@
 
     <script src="script.js"></script>
     <script>
-// Simple form handler - inline JavaScript
+        // Form submission handler for Formspree
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('email-form');
-    const success = document.getElementById('success-message');
+    console.log('Page loaded - JavaScript is working!');
     
-    if (form) {
-        form.addEventListener('submit', function(e) {
+    const emailForm = document.getElementById('email-form');
+    const successMessage = document.getElementById('success-message');
+    
+    if (emailForm && successMessage) {
+        emailForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            console.log('Form submitted to Formspree!');
             
-            if (email.includes('@')) {
-                const button = this.querySelector('button');
-                button.innerHTML = 'Processing...';
-                button.disabled = true;
-                
-                setTimeout(() => {
-                    form.style.display = 'none';
-                    success.classList.remove('hidden');
-                }, 1000);
-            } else {
-                alert('Please enter a valid email');
+            const emailInput = document.getElementById('email');
+            const submitButton = this.querySelector('button[type="submit"]');
+            const buttonText = document.getElementById('button-text');
+            
+            const email = emailInput.value.trim();
+            
+            // Basic email validation
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
             }
+            
+            console.log('Valid email:', email);
+            
+            // Show loading state
+            submitButton.disabled = true;
+            const originalText = buttonText.innerHTML;
+            buttonText.innerHTML = 'Processing...';
+            
+            // Submit to Formspree
+            const formData = new FormData(emailForm);
+            
+            fetch(emailForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show success message
+                    emailForm.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    console.log('Form submitted successfully to Formspree!');
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+                // Reset button
+                submitButton.disabled = false;
+                buttonText.innerHTML = originalText;
+            });
         });
     }
-});
-
-// Nav scroll effect
-window.addEventListener('scroll', function() {
-    const nav = document.getElementById('main-nav');
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+    
+    // Rest of your existing code for navigation and smooth scrolling...
+    // (keep the window scroll event and smooth scrolling code)
 });
 </script>
 </body>
