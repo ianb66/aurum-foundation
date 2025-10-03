@@ -312,7 +312,7 @@ body {
         padding: 15px 10px 0;
     }
     
-    /* Trust & Security Section */
+   /* Trust & Security Section */
 .trust-section {
     padding: 100px 20px;
     background: #f8fafc;
@@ -320,13 +320,14 @@ body {
 }
 
 .trust-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #4a5568;
     margin-bottom: 60px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 .security-features {
@@ -353,12 +354,12 @@ body {
 }
 
 .security-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
 }
 
 .security-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
     color: #2d3748;
     font-weight: 700;
@@ -367,12 +368,12 @@ body {
 .security-card p {
     color: #718096;
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .exchange-partners {
     background: white;
-    padding: 40px;
+    padding: 50px 40px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     max-width: 600px;
@@ -380,9 +381,9 @@ body {
 }
 
 .partners-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: #4a5568;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-weight: 600;
 }
 
@@ -396,11 +397,11 @@ body {
 .exchange-name {
     background: linear-gradient(135deg, #0866ff 0%, #004ecc 100%);
     color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 10px rgba(8, 102, 255, 0.2);
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(8, 102, 255, 0.3);
 }
 
 /* Responsive */
@@ -415,12 +416,15 @@ body {
     }
     
     .exchange-name {
-        padding: 10px 20px;
-        font-size: 0.8rem;
+        padding: 12px 20px;
+        font-size: 1rem;
     }
     
     .exchange-partners {
         padding: 30px 20px;
     }
-}
+    
+    .trust-subtitle {
+        font-size: 1.2rem;
+    }
 }
