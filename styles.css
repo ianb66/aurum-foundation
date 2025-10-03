@@ -253,39 +253,6 @@ body {
     font-size: 1.1rem;
 }
 
-.exchange-partners {
-    background: white;
-    padding: 50px 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.partners-title {
-    font-size: 1.3rem;
-    color: #4a5568;
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.exchange-logos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.exchange-name {
-    background: linear-gradient(135deg, #0866ff 0%, #004ecc 100%);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(8, 102, 255, 0.3);
-}
-
 /* Final CTA */
 .final-cta {
     padding: 100px 20px;
@@ -362,5 +329,31 @@ body {
     
     .risk-disclosure {
         font-size: 0.7rem;
+    }
+    
+    @media (max-width: 768px) {
+    .security-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .security-card {
+        padding: 30px 20px;
+    }
+    
+    .security-icon {
+        font-size: 2.5rem;
+    }
+    
+    .trust-subtitle {
+        font-size: 1.1rem;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-section {
+        padding: 60px 15px;
     }
 }
