@@ -81,10 +81,10 @@
                             <i class="lucide lucide-arrow-right"></i>
                         </span>
                     </a>
-                    <a href="https://aurum.foundation" target="_blank" rel="noopener noreferrer" class="cta-secondary">
-                        Watch Video
-                        <i class="lucide lucide-sparkles"></i>
-                    </a>
+                    <a href="#" class="cta-secondary" id="watchVideoBtn">
+    Watch Video
+    <i class="lucide lucide-sparkles"></i>
+</a>
                 </div>
 
                 <!-- Trust indicators -->
@@ -479,5 +479,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // (keep the window scroll event and smooth scrolling code)
 });
 </script>
+    <!-- Video Modal -->
+<div id="videoModal" class="video-modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close">
+            <i class="lucide lucide-x"></i>
+        </button>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hep0eYXJY8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
 </body>
 </html>
