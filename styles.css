@@ -395,7 +395,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 1.25rem 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(239, 68, 68, 0.1);
     color: #fff;
     font-weight: 700;
     font-size: 1.125rem;
@@ -403,13 +403,14 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(239, 68, 68, 0.4);
 }
 
 .cta-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.8);
     transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
 }
 
 .cta-secondary i {
