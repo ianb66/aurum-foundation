@@ -1334,7 +1334,7 @@ body {
 
 /* Mobile-responsive close button */
 @media (max-width: 768px) {
-    .modal-close-btn {
+    .modal-close {
         width: 50px;
         height: 50px;
         top: 10px;
@@ -1342,8 +1342,8 @@ body {
         font-size: 24px;
     }
     
-    /* Add swipe-down gesture hint */
-    .modal-container::after {
+    /* Add swipe indicator to your modal content */
+    .modal-content::after {
         content: "";
         position: absolute;
         top: 10px;
@@ -1353,4 +1353,6 @@ body {
         height: 4px;
         background: rgba(255, 255, 255, 0.5);
         border-radius: 2px;
-     }
+        z-index: 1001;
+    }
+ }
