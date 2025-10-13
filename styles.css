@@ -369,9 +369,9 @@ body {
     margin: 0 auto 1.5rem;
 }
 
-.blue-step { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-.blue-step-2 { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-.slate-step { background: linear-gradient(135deg, #475569, #334155); }
+.red-step { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.amber-step { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.green-step { background: linear-gradient(135deg, #10b981, #059669); }
 
 .step-title {
     font-size: 1.5rem;
