@@ -3,945 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurum Foundation - AI-Powered Financial Ecosystem</title>
+    <title>How2EarnCrypto - AI-Powered Financial Ecosystem</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/font/lucide.min.css" rel="stylesheet">
-    <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        /* Utility Classes */
-        .min-h-screen {
-            min-height: 100vh;
-        }
-
-        .bg-gradient-br {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes float-slow {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes float-medium {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes float-fast {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes gradient {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shine {
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes particle-float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-            }
-            25% {
-                transform: translateY(-20px) translateX(10px);
-            }
-            50% {
-                transform: translateY(-40px) translateX(-5px);
-            }
-            75% {
-                transform: translateY(-20px) translateX(-10px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        @keyframes tilt {
-            0%, 100% {
-                transform: rotate(-1deg);
-            }
-            50% {
-                transform: rotate(1deg);
-            }
-        }
-
-        /* Background Elements */
-        .fixed-background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            animation-duration: 8s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-        }
-
-        .orb-1 {
-            top: 25%;
-            left: 25%;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(59, 130, 246, 0.1);
-            animation-name: float-slow;
-        }
-
-        .orb-2 {
-            top: 75%;
-            right: 25%;
-            width: 20rem;
-            height: 20rem;
-            background: rgba(147, 51, 234, 0.08);
-            animation-name: float-medium;
-        }
-
-        .orb-3 {
-            bottom: 25%;
-            left: 50%;
-            width: 16rem;
-            height: 16rem;
-            background: rgba(59, 130, 246, 0.1);
-            animation-name: float-fast;
-        }
-
-        /* Particle System */
-        .particle-container {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: particle-float 20s infinite linear;
-        }
-
-        /* Navigation */
-        .nav-container {
-            position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.5rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            position: relative;
-        }
-
-        .logo-glow {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, #3b82f6, #06b6d4);
-            border-radius: 0.5rem;
-            filter: blur(8px);
-            opacity: 0.75;
-            transition: opacity 1s;
-        }
-
-        .nav-logo:hover .logo-glow {
-            opacity: 1;
-            animation: tilt 10s ease-in-out infinite;
-        }
-
-        .logo-text {
-            position: relative;
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: -0.025em;
-            color: white;
-        }
-
-        .nav-link {
-            position: relative;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .nav-link:hover {
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .link-underline {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, #3b82f6, #06b6d4);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover .link-underline {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.1), transparent 50%);
-        }
-
-        .hero-overlay-2 {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 70% 80%, rgba(147, 51, 234, 0.08), transparent 50%);
-        }
-
-        .hero-content {
-            position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 5rem 1.5rem 8rem;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 9999px;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
-            transition: all 0.5s;
-        }
-
-        .hero-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
-        }
-
-        .badge-dot {
-            width: 0.5rem;
-            height: 0.5rem;
-            background: #60a5fa;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .badge-text {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #93c5fd;
-        }
-
-        .headline-container {
-            transition: all 1s;
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-
-        .delayed {
-            animation-delay: 0.3s;
-            opacity: 0;
-        }
-
-        .delayed-2 {
-            animation-delay: 0.5s;
-            opacity: 0;
-        }
-
-        .delayed-3 {
-            animation-delay: 0.7s;
-            opacity: 0;
-        }
-
-        .hero-headline {
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .hero-headline {
-                font-size: 4.5rem;
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #60a5fa, #22d3ee, #60a5fa);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradient 3s ease infinite;
-        }
-
-        .description-text {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            margin-bottom: 3rem;
-            max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        /* CTA Buttons */
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        @media (min-width: 640px) {
-            .cta-container {
-                flex-direction: row;
-            }
-        }
-
-        .magnetic-button {
-            display: inline-block;
-            transition: transform 0.2s ease-out;
-        }
-
-        .primary-button {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(to right, #3b82f6, #06b6d4);
-            color: white;
-            font-weight: 600;
-            border-radius: 0.75rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.25);
-        }
-
-        .primary-button:hover {
-            background: linear-gradient(to right, #2563eb, #0891b2);
-            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .button-shine {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: skewX(-12deg) translateX(-100%);
-            transition: transform 1s;
-        }
-
-        .primary-button:hover .button-shine {
-            transform: skewX(-12deg) translateX(100%);
-        }
-
-        .button-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            transition: transform 0.3s;
-        }
-
-        .primary-button:hover .button-icon {
-            transform: translateX(2px);
-        }
-
-        .secondary-button {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            color: white;
-            font-weight: 600;
-            border-radius: 0.75rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .secondary-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-
-        /* Trust Indicators */
-        .trust-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            font-size: 0.875rem;
-            color: #94a3b8;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-        }
-
-        .trust-item:hover {
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .trust-icon {
-            padding: 0.5rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 0.5rem;
-            transition: all 0.3s;
-        }
-
-        .trust-item:hover .trust-icon {
-            background: rgba(59, 130, 246, 0.2);
-        }
-
-        .trust-icon i {
-            width: 1rem;
-            height: 1rem;
-            color: #22c55e;
-        }
-
-        /* Features Section */
-        .features-section {
-            position: relative;
-            padding: 6rem 1.5rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        .section-description {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .feature-card {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .feature-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .feature-icon {
-            display: inline-flex;
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-        }
-
-        .feature-icon i {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: white;
-        }
-
-        .gradient-1 { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
-        .gradient-2 { background: linear-gradient(135deg, #06b6d4, #0d9488); }
-        .gradient-3 { background: linear-gradient(135deg, #0d9488, #10b981); }
-        .gradient-4 { background: linear-gradient(135deg, #10b981, #22c55e); }
-        .gradient-5 { background: linear-gradient(135deg, #3b82f6, #6366f1); }
-        .gradient-6 { background: linear-gradient(135deg, #6366f1, #3b82f6); }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.75rem;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover .feature-title {
-            color: white;
-        }
-
-        .feature-description {
-            color: #94a3b8;
-            line-height: 1.6;
-            transition: color 0.3s;
-        }
-
-        .feature-card:hover .feature-description {
-            color: #cbd5e1;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            position: relative;
-            padding: 6rem 1.5rem;
-            background: linear-gradient(to bottom, transparent, rgba(30, 27, 75, 0.2), transparent);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s;
-        }
-
-        .stat-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-
-        .stat-icon {
-            display: inline-flex;
-            padding: 0.75rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .stat-card:hover .stat-icon {
-            background: rgba(59, 130, 246, 0.2);
-        }
-
-        .stat-icon i {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: #60a5fa;
-        }
-
-        .stat-value {
-            font-size: 1.875rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value.green {
-            color: #22c55e;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #94a3b8;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            position: relative;
-            padding: 6rem 1.5rem;
-        }
-
-        .cta-card {
-            position: relative;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-
-        .cta-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .cta-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05), rgba(59, 130, 246, 0.05));
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .cta-card:hover .cta-overlay {
-            opacity: 1;
-        }
-
-        .cta-radial {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 70%);
-        }
-
-        .cta-content {
-            position: relative;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .cta-title {
-                font-size: 3rem;
-            }
-        }
-
-        .cta-description {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            margin-bottom: 2rem;
-        }
-
-        .cta-form {
-            max-width: 28rem;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        @media (min-width: 640px) {
-            .form-group {
-                flex-direction: row;
-            }
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.75rem;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .email-input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-        }
-
-        .email-input:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .email-input::placeholder {
-            color: #94a3b8;
-        }
-
-        .submit-button {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(to right, #3b82f6, #06b6d4);
-            color: white;
-            font-weight: 600;
-            border: none;
-            border-radius: 0.75rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25);
-            white-space: nowrap;
-        }
-
-        .submit-button:hover:not(:disabled) {
-            background: linear-gradient(to right, #2563eb, #0891b2);
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .form-note {
-            font-size: 0.875rem;
-            color: #94a3b8;
-            margin-top: 1rem;
-        }
-
-        .success-message {
-            max-width: 28rem;
-            margin: 0 auto;
-            padding: 1.5rem;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            border-radius: 0.75rem;
-        }
-
-        .success-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .success-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: #22c55e;
-        }
-
-        .success-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .success-text {
-            color: #cbd5e1;
-            text-align: center;
-        }
-
-        /* Footer */
-        .footer {
-            position: relative;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(16px);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-content {
-                flex-direction: row;
-            }
-        }
-
-        .footer-logo .logo-text {
-            font-size: 1.25rem;
-            color: white;
-            font-weight: bold;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.875rem;
-            color: #94a3b8;
-        }
-
-        .footer-link {
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .footer-link:hover {
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .footer-copyright {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #3b82f6, #06b6d4);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #2563eb, #0891b2);
-        }
-    </style>
 </head>
 <body>
     <div class="min-h-screen bg-gradient-br overflow-hidden">
@@ -962,9 +29,8 @@
             
             <nav class="nav-container">
                 <div class="nav-logo">
-          <div class="logo-glow"></div>
-            </div> 
-            
+                    <div class="logo-glow"></div>
+                </div>
             </nav>
 
             <div class="hero-content">
@@ -1000,7 +66,7 @@
                         </a>
                     </div>
                     
-                    <a href="https://aurum.foundation" target="_blank" class="secondary-button">
+                    <a href="#" class="secondary-button">
                         Learn More
                     </a>
                 </div>
@@ -1094,7 +160,7 @@
                         <div class="feature-icon gradient-6">
                             <i data-lucide="globe"></i>
                         </div>
-                        <h3 class="feature-title">AURUM Token</h3>
+                        <h3 class="feature-title">How2EarnCrypto Token</h3>
                         <p class="feature-description">
                             Utility token powering the entire ecosystem with exclusive benefits, rewards, and governance rights.
                         </p>
@@ -1152,41 +218,35 @@
                     <div class="cta-content">
                         <h2 class="cta-title">Ready to Get Started?</h2>
                         <p class="cta-description">
-                            Join the Aurum Foundation ecosystem today and experience the future of intelligent financial management.
+                            Join the How2EarnCrypto ecosystem today and experience the future of intelligent financial management.
                         </p>
 
-                       <form 
-    id="signup-form" 
-    class="cta-form"
-    action="https://formspree.io/f/mblzyeka"
-    method="POST"
->
-    <div class="form-group">
-        <input 
-            type="email" 
-            name="email"
-            placeholder="Enter your email"
-            required
-            class="email-input"
-        >
-        <textarea 
-            name="message"
-            placeholder="Your message"
-            required
-            class="message-input"
-        ></textarea>
-        <div class="magnetic-button">
-            <button type="submit" class="submit-button">
-    <div class="button-shine"></div>
-    Get Access
-    <i data-lucide="arrow-right" class="button-icon"></i>
-</button>
-        </div>
-    </div>
-    <p class="form-note">
-        By signing up, you agree to receive updates about How2EarnCrypto.
-    </p>
-</form>
+                        <form 
+                            id="signup-form" 
+                            class="cta-form"
+                            action="https://formspree.io/f/mblzyeka"
+                            method="POST"
+                        >
+                            <div class="form-group">
+                                <input 
+                                    type="email" 
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    required
+                                    class="email-input"
+                                >
+                                <div class="magnetic-button">
+                                    <button type="submit" class="submit-button">
+                                        <div class="button-shine"></div>
+                                        Get Access
+                                        <i data-lucide="arrow-right" class="button-icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="form-note">
+                                By signing up, you agree to receive updates about How2EarnCrypto.
+                            </p>
+                        </form>
 
                         <div id="success-message" class="success-message hidden">
                             <div class="success-content">
@@ -1194,7 +254,7 @@
                                 <h3 class="success-title">Success!</h3>
                             </div>
                             <p class="success-text">
-                                Thank you for your interest. Check your email for next steps to access the Aurum Foundation ecosystem.
+                                Thank you for your interest. Check your email for next steps to access the How2EarnCrypto ecosystem.
                             </p>
                         </div>
                     </div>
@@ -1207,12 +267,12 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
-                    
+                        <!-- Logo placeholder -->
                     </div>
 
                     <div class="footer-links">
-                        <a href="https://aurum.foundation" target="_blank" class="footer-link">Official Website</a>
-                        <a href="https://aurum.foundation/#ecosystem" target="_blank" class="footer-link">Ecosystem</a>
+                        <a href="#" class="footer-link">Official Website</a>
+                        <a href="#" class="footer-link">Ecosystem</a>
                     </div>
 
                     <p class="footer-copyright">
@@ -1373,17 +433,35 @@
                     submitButton.innerHTML = 'Processing...';
                     submitButton.disabled = true;
                     
-                    // Simulate API call
-                    setTimeout(() => {
-                        // Show success message
-                        form.style.display = 'none';
-                        successMessage.classList.remove('hidden');
-                        
-                        // Reset form
-                        form.reset();
-                        submitButton.innerHTML = originalText;
-                        submitButton.disabled = false;
-                    }, 1000);
+                    // Submit the form to Formspree
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            form.style.display = 'none';
+                            successMessage.classList.remove('hidden');
+                            
+                            // Reset form
+                            form.reset();
+                            submitButton.innerHTML = originalText;
+                            submitButton.disabled = false;
+                        } else {
+                            response.json().then(data => {
+                                if (Object.hasOwn(data, 'errors')) {
+                                    alert(data["errors"].map(error => error["message"]).join(", "));
+                                } else {
+                                    alert("Oops! There was a problem submitting your form");
+                                }
+                            });
+                        }
+                    }).catch(error => {
+                        alert("Oops! There was a problem submitting your form");
+                    });
                 });
             }
         }
