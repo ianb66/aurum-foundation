@@ -769,6 +769,12 @@ body {
     color: white;
     font-size: 1rem;
     transition: all 0.3s;
+    font-family: inherit;
+}
+
+.email-input textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
 .email-input:focus {
