@@ -4,566 +4,1400 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurum Foundation - AI-Powered Financial Ecosystem</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/light.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/font/lucide.min.css" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .min-h-screen {
+            min-height: 100vh;
+        }
+
+        .bg-gradient-br {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes float-slow {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes float-medium {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float-fast {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(-40px) translateX(-5px);
+            }
+            75% {
+                transform: translateY(-20px) translateX(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes tilt {
+            0%, 100% {
+                transform: rotate(-1deg);
+            }
+            50% {
+                transform: rotate(1deg);
+            }
+        }
+
+        /* Background Elements */
+        .fixed-background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .orb-1 {
+            top: 25%;
+            left: 25%;
+            width: 24rem;
+            height: 24rem;
+            background: rgba(59, 130, 246, 0.1);
+            animation-name: float-slow;
+        }
+
+        .orb-2 {
+            top: 75%;
+            right: 25%;
+            width: 20rem;
+            height: 20rem;
+            background: rgba(6, 182, 212, 0.08);
+            animation-name: float-medium;
+        }
+
+        .orb-3 {
+            bottom: 25%;
+            left: 50%;
+            width: 16rem;
+            height: 16rem;
+            background: rgba(14, 165, 233, 0.1);
+            animation-name: float-fast;
+        }
+
+        /* Particle System */
+        .particle-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: particle-float 20s infinite linear;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            border-radius: 0.5rem;
+            filter: blur(8px);
+            opacity: 0.75;
+            transition: opacity 1s;
+        }
+
+        .nav-logo:hover .logo-glow {
+            opacity: 1;
+            animation: tilt 10s ease-in-out infinite;
+        }
+
+        .logo-text {
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -0.025em;
+            background: linear-gradient(to right, #2563eb, #0891b2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .link-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover .link-underline {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 8rem;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+            transition: all 0.5s;
+        }
+
+        .hero-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
+        }
+
+        .badge-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #22d3ee);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .badge-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: linear-gradient(to right, #93c5fd, #67e8f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .headline-container {
+            transition: all 1s;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delayed {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .delayed-2 {
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .delayed-3 {
+            animation-delay: 0.7s;
+            opacity: 0;
+        }
+
+        .hero-headline {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-headline {
+                font-size: 4.5rem;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #22d3ee, #60a5fa);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        .description-text {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 640px) {
+            .cta-container {
+                flex-direction: row;
+            }
+        }
+
+        .magnetic-button {
+            display: inline-block;
+            transition: transform 0.2s ease-out;
+        }
+
+        .primary-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .primary-button:hover {
+            background: linear-gradient(to right, #2563eb, #0891b2);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4);
+        }
+
+        .button-shine {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: skewX(-12deg) translateX(-100%);
+            transition: transform 1s;
+        }
+
+        .primary-button:hover .button-shine {
+            transform: skewX(-12deg) translateX(100%);
+        }
+
+        .button-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .primary-button:hover .button-icon {
+            transform: translateX(2px);
+        }
+
+        .secondary-button {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Trust Indicators */
+        .trust-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .trust-item:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .trust-icon {
+            padding: 0.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .trust-item:hover .trust-icon {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .trust-icon i {
+            width: 1rem;
+            height: 1rem;
+            color: #60a5fa;
+        }
+
+        /* Features Section */
+        .features-section {
+            position: relative;
+            padding: 6rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-icon {
+            display: inline-flex;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-icon i {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: white;
+        }
+
+        .gradient-1 { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+        .gradient-2 { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .gradient-3 { background: linear-gradient(135deg, #3b82f6, #0ea5e9); }
+        .gradient-4 { background: linear-gradient(135deg, #0ea5e9, #06b6d4); }
+        .gradient-5 { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .gradient-6 { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover .feature-title {
+            background: linear-gradient(to right, #93c5fd, #67e8f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            transition: color 0.3s;
+        }
+
+        .feature-card:hover .feature-description {
+            color: #cbd5e1;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            padding: 6rem 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .stat-icon {
+            display: inline-flex;
+            padding: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .stat-card:hover .stat-icon {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .stat-icon i {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #60a5fa;
+        }
+
+        .stat-value {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            padding: 6rem 1.5rem;
+        }
+
+        .cta-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+
+        .cta-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05), rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .cta-card:hover .cta-overlay {
+            opacity: 1;
+        }
+
+        .cta-radial {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .cta-title {
+                font-size: 3rem;
+            }
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .cta-form {
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-group {
+                flex-direction: row;
+            }
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+
+        .email-input:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .email-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .submit-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25);
+            white-space: nowrap;
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: linear-gradient(to right, #2563eb, #0891b2);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        .success-message {
+            max-width: 28rem;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 0.75rem;
+        }
+
+        .success-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #22c55e;
+        }
+
+        .success-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .success-text {
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.25rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .footer-link {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #06b6d4);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2563eb, #0891b2);
+        }
+    </style>
 </head>
 <body>
-    <!-- Animated background -->
-    <div class="animated-background">
-        <div class="bg-gradient"></div>
-        <div class="pulse-circle circle-1"></div>
-        <div class="pulse-circle circle-2"></div>
-        <div class="pulse-circle circle-3"></div>
-    </div>
+    <div class="min-h-screen bg-gradient-br overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="fixed-background">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </div>
 
-    <!-- Hero Section -->
-    <header class="hero-section">
-        <!-- Sticky Navigation -->
-        <nav id="main-nav" class="main-nav">
-            <div class="nav-container">
+        <!-- Particle System -->
+        <div class="particle-container" id="particleContainer"></div>
+
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-overlay"></div>
+            
+            <nav class="nav-container">
                 <div class="nav-logo">
+                    <div class="logo-glow"></div>
                     <span class="logo-text">AURUM</span>
                 </div>
-                <a href="#access" class="nav-cta">
+                <a href="#access" class="nav-link">
                     Get Access
-                    <i class="lucide lucide-arrow-right"></i>
+                    <span class="link-underline"></span>
                 </a>
-            </div>
-        </nav>
+            </nav>
 
-        <div class="hero-content">
-            <div class="hero-container">
-                <!-- Floating badge -->
-                <div class="floating-badge">
-                    <i class="lucide lucide-check-circle"></i>
-                    <span>JOIN 150,000+ USERS</span>
+            <div class="hero-content">
+                <!-- Animated Badge -->
+                <div class="hero-badge">
+                    <div class="badge-dot"></div>
+                    <span class="badge-text">AI-Powered Financial Ecosystem</span>
                 </div>
 
-                <!-- Main heading with animation -->
-                <h1 class="main-heading">
-                    The Future of
-                    <br>
-                    <span class="gradient-text">
-                        Financial Freedom
-                        <div class="text-glow"></div>
-                    </span>
-                </h1>
+                <!-- Main Headline -->
+                <div class="headline-container fade-in-up">
+                    <h1 class="hero-headline">
+                        Build Your Financial
+                        <br>
+                        <span class="gradient-text">Future With AI</span>
+                    </h1>
+                </div>
 
-                <p class="hero-subtitle">
-                    Join the revolution where AI meets finance. Earn passive income 24/7 with <span class="highlight-blue">automated trading bots</span>,
-                    <span class="highlight-cyan"> crypto banking</span>, and <span class="highlight-blue-light">institutional-grade security</span>.
-                </p>
-
-                <!-- Social proof numbers -->
-                <div class="social-proof">
-                    <div class="proof-item">
-                        <div class="proof-number">$2.4B+</div>
-                        <div class="proof-label">Total Value Locked</div>
-                    </div>
-                    <div class="proof-item">
-                        <div class="proof-number">150K+</div>
-                        <div class="proof-label">Active Users</div>
-                    </div>
-                    <div class="proof-item">
-                        <div class="proof-number green">28.5%</div>
-                        <div class="proof-label">Avg Annual Return</div>
-                    </div>
+                <div class="hero-description fade-in-up delayed">
+                    <p class="description-text">
+                        Experience the next generation of financial management. Seamlessly integrate crypto and traditional finance
+                        with AI-driven strategies that work 24/7 to grow your wealth.
+                    </p>
                 </div>
 
                 <!-- CTA Buttons -->
-                <div class="cta-buttons">
-                    <a href="#access" class="cta-primary">
-                        <span>
-                            Start Earning Today
-                            <i class="lucide lucide-arrow-right"></i>
-                        </span>
-                    </a>
-                   <a href="#" class="cta-secondary" id="watchVideoBtn">
-                        Watch Video
-                        <i class="lucide lucide-sparkles"></i>
+                <div class="cta-container fade-in-up delayed-2">
+                    <div class="magnetic-button">
+                        <a href="#access" class="primary-button">
+                            <div class="button-shine"></div>
+                            Get Started Today
+                            <i data-lucide="arrow-right" class="button-icon"></i>
+                        </a>
+                    </div>
+                    
+                    <a href="https://aurum.foundation" target="_blank" class="secondary-button">
+                        Learn More
                     </a>
                 </div>
 
-                <!-- Trust indicators -->
-                <div class="trust-indicators">
+                <!-- Trust Indicators -->
+                <div class="trust-container fade-in-up delayed-3">
                     <div class="trust-item">
-                        <i class="lucide lucide-lock"></i>
+                        <div class="trust-icon">
+                            <i data-lucide="lock"></i>
+                        </div>
                         <span>Bank-Grade Security</span>
                     </div>
                     <div class="trust-item">
-                        <i class="lucide lucide-award"></i>
-                        <span>Licensed & Regulated</span>
+                        <div class="trust-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <span>24/7 Automated Trading</span>
                     </div>
                     <div class="trust-item">
-                        <i class="lucide lucide-globe"></i>
-                        <span>180+ Countries</span>
+                        <div class="trust-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <span>Global Access</span>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <span>Award-Winning Platform</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span>Complete Ecosystem</span>
-                </div>
-                <h2 class="section-title">
-                    Six Powerful Products.<br>
-                    <span class="gradient-text">One Unified Platform.</span>
-                </h2>
-                <p class="section-subtitle">
-                    Everything you need to dominate the digital economy - all seamlessly integrated
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon blue-gradient">
-                            <i class="lucide lucide-shield"></i>
-                        </div>
-                    </div>
-                    <h3>NeoBank</h3>
-                    <p>Web 3.0 banking platform seamlessly managing both crypto and fiat assets with institutional-grade security.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon cyan-gradient">
-                            <i class="lucide lucide-bot"></i>
-                        </div>
-                    </div>
-                    <h3>AI Trading Bots</h3>
-                    <p>Advanced autonomous trading systems (EX-AI & Zeus AI) that work 24/7 to optimize your portfolio performance.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon teal-gradient">
-                            <i class="lucide lucide-zap"></i>
-                        </div>
-                    </div>
-                    <h3>Flash Loans</h3>
-                    <p>AI-powered arbitrage trading that capitalizes on market inefficiencies for consistent returns.</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon emerald-gradient">
-                            <i class="lucide lucide-credit-card"></i>
-                        </div>
-                        <div class="feature-badge">
-                            <i class="lucide lucide-rocket"></i>
-                            <span>Launching Soon</span>
-                        </div>
-                    </div>
-                    <h3>Crypto Cards</h3>
-                    <p>Spend your cryptocurrency anywhere in the world with instant conversion and global acceptance.</p>
-                </div>
-
-                <!-- Feature 5 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon indigo-gradient">
-                            <i class="lucide lucide-trending-up"></i>
-                        </div>
-                        <div class="feature-badge">
-                            <i class="lucide lucide-rocket"></i>
-                            <span>Launching Soon</span>
-                        </div>
-                    </div>
-                    <h3>DEX Exchange</h3>
-                    <p>Decentralized trading platform with deep liquidity and seamless swaps across multiple blockchains.</p>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <div class="feature-icon blue-indigo-gradient">
-                            <i class="lucide lucide-globe"></i>
-                        </div>
-                    </div>
-                    <h3>AURUM Token</h3>
-                    <p>Utility token powering the entire ecosystem with exclusive benefits, rewards, and governance rights.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits-section">
-        <div class="container">
-            <div class="benefits-grid">
-                <div class="benefits-content">
-                    <div class="section-badge">
-                        <span>Why Aurum</span>
-                    </div>
-                    <h2 class="section-title">
-                        Not Just Another<br>
-                        <span class="gradient-text">Crypto Platform</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Join 150,000+ users already earning passive income through our battle-tested AI systems.
-                        No expertise required—just smart automation.
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header fade-in-up">
+                    <h2 class="section-title">Complete Financial Ecosystem</h2>
+                    <p class="section-description">
+                        Everything you need to manage, grow, and spend your digital assets in one integrated platform
                     </p>
-
-                    <div class="benefits-list">
-                        <!-- Benefit 1 -->
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="lucide lucide-check-circle"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <div class="benefit-header">
-                                    <h3>AI Does the Work</h3>
-                                    <span class="benefit-stat">99.7% uptime</span>
-                                </div>
-                                <p>Our trading bots analyze markets 24/7 and execute profitable trades automatically while you sleep.</p>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 2 -->
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="lucide lucide-check-circle"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <div class="benefit-header">
-                                    <h3>All-in-One Ecosystem</h3>
-                                    <span class="benefit-stat">6 products</span>
-                                </div>
-                                <p>Banking, trading, cards, and DeFi—everything interconnected for seamless wealth management.</p>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 3 -->
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="lucide lucide-check-circle"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <div class="benefit-header">
-                                    <h3>Fort Knox Security</h3>
-                                    <span class="benefit-stat">100% secured</span>
-                                </div>
-                                <p>Military-grade encryption, cold storage, and insurance protect your assets better than traditional banks.</p>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 4 -->
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="lucide lucide-check-circle"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <div class="benefit-header">
-                                    <h3>True Passive Income</h3>
-                                    <span class="benefit-stat">28.5% APY avg</span>
-                                </div>
-                                <p>Earn from automated trading, staking rewards, and liquidity pools simultaneously—no effort required.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="stats-card-wrapper">
-                    <div class="stats-glow"></div>
-                    <div class="stats-card">
-                        <div class="stats-badge">
-                            <div class="live-dot"></div>
-                            <span>LIVE</span>
+                <div class="features-grid">
+                    <div class="feature-card" data-delay="0">
+                        <div class="feature-icon gradient-1">
+                            <i data-lucide="shield"></i>
                         </div>
+                        <h3 class="feature-title">NeoBank</h3>
+                        <p class="feature-description">
+                            Web 3.0 banking platform seamlessly managing both crypto and fiat assets with institutional-grade security.
+                        </p>
+                    </div>
 
-                        <h3>Platform Stats</h3>
-
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <div class="stat-label">Total Value Locked</div>
-                                <div class="stat-number">$2.4B+</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-label">Active Users</div>
-                                <div class="stat-number">150K+</div>
-                            </div>
-                            <div class="stat-item green-stat">
-                                <div class="stat-label">Avg. Annual Return</div>
-                                <div class="stat-number green">28.5%</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-label">Countries Supported</div>
-                                <div class="stat-number">180+</div>
-                            </div>
+                    <div class="feature-card" data-delay="100">
+                        <div class="feature-icon gradient-2">
+                            <i data-lucide="bot"></i>
                         </div>
+                        <h3 class="feature-title">AI Trading Bots</h3>
+                        <p class="feature-description">
+                            Advanced autonomous trading systems (EX-AI & Zeus AI) that work 24/7 to optimize your portfolio performance.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" data-delay="200">
+                        <div class="feature-icon gradient-3">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3 class="feature-title">Flash Loans</h3>
+                        <p class="feature-description">
+                            AI-powered arbitrage trading that capitalizes on market inefficiencies for consistent returns.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" data-delay="300">
+                        <div class="feature-icon gradient-4">
+                            <i data-lucide="credit-card"></i>
+                        </div>
+                        <h3 class="feature-title">Crypto Cards</h3>
+                        <p class="feature-description">
+                            Spend your cryptocurrency anywhere in the world with instant conversion and global acceptance.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" data-delay="400">
+                        <div class="feature-icon gradient-5">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3 class="feature-title">DEX Exchange</h3>
+                        <p class="feature-description">
+                            Decentralized trading platform with deep liquidity and seamless swaps across multiple blockchains.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" data-delay="500">
+                        <div class="feature-icon gradient-6">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <h3 class="feature-title">AURUM Token</h3>
+                        <p class="feature-description">
+                            Utility token powering the entire ecosystem with exclusive benefits, rewards, and governance rights.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section id="access" class="cta-section">
-        <div class="cta-container">
-            <div class="cta-gradient-border">
-                <div class="cta-glow"></div>
-
-                <div class="cta-content">
-                    <div class="cta-glow-top"></div>
-                    <div class="cta-glow-bottom"></div>
-
-                    <div class="cta-inner">
-                        <div class="cta-badge">
-                            <i class="lucide lucide-rocket"></i>
-                            <span>CLAIM YOUR SPOT</span>
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="trending-up"></i>
                         </div>
+                        <div class="stat-value" data-target="2.4">0</div>
+                        <div class="stat-label">Total Value Locked</div>
+                    </div>
 
-                        <h2 class="cta-title">
-                            Ready to Build<br>
-                            <span class="gradient-text">Your Financial Future?</span>
-                        </h2>
-                        <p class="cta-subtitle">
-                            Join and get <span class="highlight-blue">exclusive bonuses</span> + priority access to all new features.
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-value" data-target="150">0</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="star"></i>
+                        </div>
+                        <div class="stat-value" data-target="28.5">0</div>
+                        <div class="stat-label">Avg. Annual Return</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <div class="stat-value" data-target="180">0</div>
+                        <div class="stat-label">Countries Supported</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="access" class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-overlay"></div>
+                    <div class="cta-radial"></div>
+
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to Get Started?</h2>
+                        <p class="cta-description">
+                            Join the Aurum Foundation ecosystem today and experience the future of intelligent financial management.
                         </p>
 
-                        <form id="email-form" class="email-form" action="https://formspree.io/f/mblzyeka" method="POST">
+                        <form id="signup-form" class="cta-form">
                             <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Enter your email address" required class="email-input">
-                                <button type="submit" class="submit-button">
-                                    <span id="button-text">
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    placeholder="Enter your email"
+                                    required
+                                    class="email-input"
+                                >
+                                <div class="magnetic-button">
+                                    <button type="submit" class="submit-button">
+                                        <div class="button-shine"></div>
                                         Get Access
-                                        <i class="lucide lucide-arrow-right"></i>
-                                    </span>
-                                </button>
-                            </div>
-
-                            <!-- Hidden field to track source -->
-                            <input type="hidden" name="_subject" value="New Aurum Signup!">
-                            <input type="hidden" name="_replyto" value="%email%">
-                            
-                            <div class="form-features">
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>No credit card required</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>Setup in 5 minutes</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="lucide lucide-check-circle"></i>
-                                    <span>Withdraw anytime</span>
+                                        <i data-lucide="arrow-right" class="button-icon"></i>
+                                    </button>
                                 </div>
                             </div>
-
                             <p class="form-note">
-                                By signing up, you'll receive exclusive updates and early access. We respect your privacy.
+                                By signing up, you agree to receive updates about Aurum Foundation.
                             </p>
                         </form>
 
                         <div id="success-message" class="success-message hidden">
-                            <div class="success-icon">
-                                <i class="lucide lucide-check-circle"></i>
+                            <div class="success-content">
+                                <i data-lucide="check-circle-2" class="success-icon"></i>
+                                <h3 class="success-title">Success!</h3>
                             </div>
-                            <h3>You're In! 🎉</h3>
-                            <p>
-                                Access your back office and setup instructions below
-                                <i class="lucide lucide-arrow-down"></i>
+                            <p class="success-text">
+                                Thank you for your interest. Check your email for next steps to access the Aurum Foundation ecosystem.
                             </p>
-                            <div class="success-buttons">
-                                <a href="https://backoffice.aurum.foundation/u/8MY411" target="_blank" rel="noopener noreferrer" class="success-cta">
-                                    Access Now
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">AURUM</span>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <span class="logo-text">AURUM</span>
+                    </div>
+
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Official Website</a>
+                        <a href="#" class="footer-link">Ecosystem</a>
+                        <a href="#" class="footer-link">Documentation</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+
+                    <p class="footer-copyright">
+                        © 2025 Aurum Foundation. All rights reserved.
+                    </p>
                 </div>
-
-                <div class="footer-links">
-                    <a href="https://aurum.foundation" target="_blank" rel="noopener noreferrer">Official Website</a>
-                    <a href="https://aurum.foundation/#ecosystem" target="_blank" rel="noopener noreferrer">Ecosystem</a>
-                    <a href="#access">Get Started</a>
-                </div>
-
-                <p class="footer-copyright">
-                    © 2025.How2EarnCrypto.All Rights Reserved 
-                </p>
             </div>
-        </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div id="videoModal" class="video-modal hidden">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">
-                <i class="lucide lucide-x"></i>
-            </button>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/hep0eYXJY8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
+        </footer>
     </div>
 
-    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/lucide.min.js"></script>
     <script>
-    // Navigation scroll effect
-    window.addEventListener('scroll', function() {
-        const nav = document.getElementById('main-nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-    // Form submission handler for Formspree
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Page loaded - JavaScript is working!');
-        
-        const emailForm = document.getElementById('email-form');
-        const successMessage = document.getElementById('success-message');
-        
-        if (emailForm && successMessage) {
-            emailForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                console.log('Form submitted to Formspree!');
-                
-                const emailInput = document.getElementById('email');
-                const submitButton = this.querySelector('button[type="submit"]');
-                const buttonText = document.getElementById('button-text');
-                
-                const email = emailInput.value.trim();
-                
-                // Basic email validation
-                if (!email || !email.includes('@') || !email.includes('.')) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
-                
-                console.log('Valid email:', email);
-                
-                // Show loading state
-                submitButton.disabled = true;
-                const originalText = buttonText.innerHTML;
-                buttonText.innerHTML = 'Processing...';
-                
-                // Submit to Formspree
-                const formData = new FormData(emailForm);
-                
-                fetch(emailForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Success - show success message
-                        emailForm.style.display = 'none';
-                        successMessage.classList.remove('hidden');
-                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        console.log('Form submitted successfully to Formspree!');
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Something went wrong. Please try again.');
-                    // Reset button
-                    submitButton.disabled = false;
-                    buttonText.innerHTML = originalText;
-                });
-            });
-        }
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+            // Initialize animations
+            initAnimations();
+            initParticles();
+            initCounters();
+            initMagneticButtons();
+            initFormHandler();
+
+            // Add scroll event listener for animations
+            window.addEventListener('scroll', handleScroll);
         });
-        
-        // Video Modal functionality
-        const watchVideoBtn = document.getElementById('watchVideoBtn');
-        const videoModal = document.getElementById('videoModal');
 
-        if (watchVideoBtn && videoModal) {
-            console.log('Video modal elements found');
-            
-            // Open modal
-            watchVideoBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Watch Video button clicked');
-                videoModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+        // Animation initialization
+        function initAnimations() {
+            // Add visible class to feature cards with delay
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const delay = card.getAttribute('data-delay') || 0;
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, parseInt(delay));
             });
 
-            // Close modal functions
-            function closeModal() {
-                videoModal.classList.add('hidden');
-                document.body.style.overflow = '';
-                
-                // Stop video
-                const iframe = videoModal.querySelector('iframe');
-                if (iframe) {
-                    iframe.src = iframe.src; // Reset to stop video
-                }
-            }
-
-            // Close when clicking X
-            const modalClose = videoModal.querySelector('.modal-close');
-            if (modalClose) {
-                modalClose.addEventListener('click', closeModal);
-            }
-
-            // Close when clicking overlay
-            const modalOverlay = videoModal.querySelector('.modal-overlay');
-            if (modalOverlay) {
-                modalOverlay.addEventListener('click', closeModal);
-            }
-
-            // Close with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
-                    closeModal();
-                }
-            });
-        } else {
-            console.log('Video modal elements NOT found:', {
-                watchVideoBtn: !!watchVideoBtn,
-                videoModal: !!videoModal
+            // Add fade-in-up class to elements on load
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
             });
         }
-    });
+
+        // Particle system
+        function initParticles() {
+            const particleContainer = document.getElementById('particleContainer');
+            if (!particleContainer) return;
+
+            // Create multiple particles
+            for (let i = 0; i < 15; i++) {
+                createParticle(particleContainer, i);
+            }
+        }
+
+        function createParticle(container, index) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random properties
+            const size = Math.random() * 2 + 1;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const duration = 20 + Math.random() * 20;
+            const delay = Math.random() * 20;
+            const color = Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.3)' : 'rgba(6, 182, 212, 0.3)';
+            
+            // Apply styles
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                left: ${left}%;
+                top: ${top}%;
+                animation-duration: ${duration}s;
+                animation-delay: ${delay}s;
+            `;
+            
+            container.appendChild(particle);
+        }
+
+        // Counter animation
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseFloat(counter.getAttribute('data-target'));
+                        animateCounter(counter, target);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        function animateCounter(element, target) {
+            const duration = 2000;
+            const steps = 60;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target % 1 === 0 ? target.toFixed(0) : target.toFixed(1);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = current % 1 === 0 ? current.toFixed(0) : current.toFixed(1);
+                }
+            }, duration / steps);
+        }
+
+        // Magnetic buttons
+        function initMagneticButtons() {
+            const magneticButtons = document.querySelectorAll('.magnetic-button');
+            
+            magneticButtons.forEach(button => {
+                button.addEventListener('mousemove', handleMagneticMove);
+                button.addEventListener('mouseleave', handleMagneticLeave);
+            });
+        }
+
+        function handleMagneticMove(e) {
+            const button = e.currentTarget;
+            const rect = button.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+            const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+            
+            button.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+
+        function handleMagneticLeave(e) {
+            const button = e.currentTarget;
+            button.style.transform = 'translate3d(0, 0, 0)';
+        }
+
+        // Form handler
+        function initFormHandler() {
+            const form = document.getElementById('signup-form');
+            const successMessage = document.getElementById('success-message');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitButton = form.querySelector('.submit-button');
+                    const originalText = submitButton.innerHTML;
+                    
+                    // Show loading state
+                    submitButton.innerHTML = 'Processing...';
+                    submitButton.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Show success message
+                        form.style.display = 'none';
+                        successMessage.classList.remove('hidden');
+                        
+                        // Reset form
+                        form.reset();
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                    }, 1000);
+                });
+            }
+        }
+
+        // Scroll animations
+        function handleScroll() {
+            const elements = document.querySelectorAll('.feature-card, .stat-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
     </script>
 </body>
 </html>
