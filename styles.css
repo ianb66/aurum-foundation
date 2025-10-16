@@ -205,8 +205,8 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     position: relative;
+    min-height: 2rem; /* Add minimum height */
 }
 
 .logo-glow {
@@ -222,14 +222,6 @@ body {
 .nav-logo:hover .logo-glow {
     opacity: 1;
     animation: tilt 10s ease-in-out infinite;
-}
-
-.logo-text {
-    position: relative;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: -0.025em;
-    color: white;
 }
 
 .nav-link {
@@ -881,13 +873,6 @@ body {
 @media (min-width: 768px) {
     .footer-content {
         flex-direction: row;
-    }
-}
-
-.footer-logo .logo-text {
-    font-size: 1.25rem;
-    color: white;
-    font-weight: bold;
 }
 
 .footer-links {
