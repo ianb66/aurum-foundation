@@ -757,7 +757,7 @@ body {
     color: white;
     font-size: 1rem;
     font-family: inherit;
-    resize: vertical;
+    resize: none;
     min-height: 120px;
     transition: all 0.3s;
 }
