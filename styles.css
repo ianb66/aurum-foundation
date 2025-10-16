@@ -757,7 +757,10 @@ body {
     color: white;
     font-size: 1rem;
     font-family: inherit;
-    resize: none !important;
+     resize: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     min-height: 120px;
     transition: all 0.3s;
 }
@@ -770,6 +773,10 @@ body {
 
 .cta-form textarea::placeholder {
     color: #94a3b8;
+}
+
+.cta-form textarea::-webkit-resizer {
+    display: none;
 }
 
 .form-group {
