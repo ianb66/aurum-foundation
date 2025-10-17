@@ -300,30 +300,14 @@
     </footer>
 
     <script>
-        // Email form functionality
-        document.getElementById('email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email-input').value;
-            if (email) {
-                document.getElementById('signup-form-card').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-            }
-        });
-
-        // Smooth scroll for footer button
-        function scrollToSignup() {
-            document.getElementById('signup-form').scrollIntoView({behavior: 'smooth'});
-        }
-    
-    <script>
+// Email form functionality
 document.getElementById('email-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // This prevents the default form submission
+    e.preventDefault();
     
     const form = e.target;
     const formData = new FormData(form);
     
-    // Show loading state (optional)
+    // Show loading state
     const submitButton = form.querySelector('.submit-button');
     const originalText = submitButton.textContent;
     submitButton.textContent = 'Submitting...';
@@ -361,6 +345,12 @@ document.getElementById('email-form').addEventListener('submit', function(e) {
         submitButton.disabled = false;
     });
 });
+
+// Smooth scroll for footer button
+function scrollToSignup() {
+    document.getElementById('signup-form').scrollIntoView({behavior: 'smooth'});
+}
+</script>
 </body>
 </html>
 
