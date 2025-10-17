@@ -1,485 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurum Foundation - AI-Powered Financial Ecosystem</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/font/lucide.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="min-h-screen bg-gradient-br overflow-hidden">
-        <!-- Animated Background Elements -->
-        <div class="fixed-background">
-            <div class="floating-orb orb-1"></div>
-            <div class="floating-orb orb-2"></div>
-            <div class="floating-orb orb-3"></div>
-        </div>
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <!-- Particle System -->
-        <div class="particle-container" id="particleContainer"></div>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: #374151;
+    background-color: #ffffff;
+}
 
-        <!-- Hero Section -->
-        <header class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="hero-overlay-2"></div>
-            
-            <nav class="nav-container">
-                <div class="nav-logo">
-                    <div class="logo-glow"></div>
-                </div>
-            </nav>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-            <div class="hero-content">
-                <!-- Animated Badge -->
-                <div class="hero-badge">
-                    <div class="badge-dot"></div>
-                    <span class="badge-text">AI-Powered Financial Ecosystem</span>
-                </div>
+/* Hero Section - Blue Gradient */
+.hero-section {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    padding: 5rem 0 8rem;
+    text-align: center;
+}
 
-                <!-- Main Headline -->
-                <div class="headline-container fade-in-up">
-                    <h1 class="hero-headline">
-                        Build Your Financial Future
-                        <br>
-                        <span class="gradient-text">With Intelligent Automation</span>
-                    </h1>
-                </div>
+.warning-badge {
+    background-color: #dbeafe;
+    color: #1e40af;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+}
 
-                <div class="hero-description fade-in-up delayed">
-                    <p class="description-text">
-                        Experience the next generation of financial management. Seamlessly integrate crypto and traditional finance
-                        with AI-driven strategies that work 24/7 to grow your wealth.
-                    </p>
-                </div>
+.text-blue {
+    color: #2563eb;
+}
 
-                <!-- CTA Buttons -->
-                <div class="cta-container fade-in-up delayed-2">
-                    <div class="magnetic-button">
-                        <a href="#access" class="primary-button">
-                            <div class="button-shine"></div>
-                            Get Started Today
-                            <i data-lucide="arrow-right" class="button-icon"></i>
-                        </a>
-                    </div>
-                    
-                    <a href="https://www.youtube.com/watch?v=9ceC7I0zErQ" target="_blank" rel="noopener noreferrer" class="secondary-button">
-                        <i data-lucide="youtube" class="button-icon"></i>
-                        Watch the Video
-                    </a>
-                </div>
+/* Video Section */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+}
 
-                <!-- Trust Indicators -->
-                <div class="trust-container fade-in-up delayed-3">
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i data-lucide="check-circle-2"></i>
-                        </div>
-                        <span>Bank-Grade Security</span>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i data-lucide="check-circle-2"></i>
-                        </div>
-                        <span>24/7 Automated Trading</span>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i data-lucide="check-circle-2"></i>
-                        </div>
-                        <span>Global Access</span>
-                    </div>
-                </div>
-            </div>
-        </header>
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
 
-        <!-- Features Section -->
-        <section class="features-section">
-            <div class="container">
-                <div class="section-header fade-in-up">
-                    <h2 class="section-title">Complete Financial Ecosystem</h2>
-                    <p class="section-description">
-                        Everything you need to manage, grow, and spend your digital assets in one integrated platform
-                    </p>
-                </div>
+/* Stats Section - Colorful Stats */
+.stats-section {
+    background-color: #1e293b;
+    color: white;
+    padding: 3rem 0;
+}
 
-                <div class="features-grid">
-                    <div class="feature-card" data-delay="0">
-                        <div class="feature-icon gradient-1">
-                            <i data-lucide="shield"></i>
-                        </div>
-                        <h3 class="feature-title">NeoBank</h3>
-                        <p class="feature-description">
-                            Web 3.0 banking platform seamlessly managing both crypto and fiat assets with institutional-grade security.
-                        </p>
-                    </div>
+.stat-number.green { color: #4ade80; }
+.stat-number.blue { color: #60a5fa; }
+.stat-number.purple { color: #a78bfa; }
+.stat-number.yellow { color: #facc15; }
 
-                    <div class="feature-card" data-delay="100">
-                        <div class="feature-icon gradient-2">
-                            <i data-lucide="bot"></i>
-                        </div>
-                        <h3 class="feature-title">AI Trading Bots</h3>
-                        <p class="feature-description">
-                            Advanced autonomous trading systems (EX-AI & Zeus AI) that work 24/7 to optimize your portfolio performance.
-                        </p>
-                    </div>
+/* Product Cards - Colorful Icons */
+.green-icon { background: linear-gradient(135deg, #4ade80, #22c55e); }
+.blue-icon { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.purple-icon { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.yellow-icon { background: linear-gradient(135deg, #facc15, #eab308); }
+.orange-icon { background: linear-gradient(135deg, #fb923c, #f97316); }
+.indigo-icon { background: linear-gradient(135deg, #818cf8, #6366f1); }
 
-                    <div class="feature-card" data-delay="200">
-                        <div class="feature-icon gradient-3">
-                            <i data-lucide="zap"></i>
-                        </div>
-                        <h3 class="feature-title">Flash Loans</h3>
-                        <p class="feature-description">
-                            AI-powered arbitrage trading that capitalizes on market inefficiencies for consistent returns.
-                        </p>
-                    </div>
+.product-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dbeafe;
+}
 
-                    <div class="feature-card" data-delay="300">
-                        <div class="feature-icon gradient-4">
-                            <i data-lucide="credit-card"></i>
-                        </div>
-                        <h3 class="feature-title">Crypto Cards</h3>
-                        <p class="feature-description">
-                            Spend your cryptocurrency anywhere in the world with instant conversion and global acceptance.
-                        </p>
-                    </div>
+/* Flagship Section - Blue Gradient */
+.flagship-section {
+    background: linear-gradient(90deg, #2563eb, #3730a3);
+    padding: 5rem 0;
+    color: white;
+}
 
-                    <div class="feature-card" data-delay="400">
-                        <div class="feature-icon gradient-5">
-                            <i data-lucide="trending-up"></i>
-                        </div>
-                        <h3 class="feature-title">DEX Exchange</h3>
-                        <p class="feature-description">
-                            Decentralized trading platform with deep liquidity and seamless swaps across multiple blockchains.
-                        </p>
-                    </div>
+.dashboard-image {
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: auto;
+}
 
-                    <div class="feature-card" data-delay="500">
-                        <div class="feature-icon gradient-6">
-                            <i data-lucide="globe"></i>
-                        </div>
-                        <h3 class="feature-title">Aurum Token</h3>
-                        <p class="feature-description">
-                            Utility token powering the entire ecosystem with exclusive benefits, rewards, and governance rights.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Traffic Light Step Colors */
+.red-step { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.amber-step { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.green-step { background: linear-gradient(135deg, #10b981, #059669); }
 
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i data-lucide="trending-up"></i>
-                        </div>
-                        <div class="stat-value" data-target="2.4">0</div>
-                        <div class="stat-label">Total Value Locked</div>
-                    </div>
+.step-number {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto 1.5rem;
+}
 
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i data-lucide="users"></i>
-                        </div>
-                        <div class="stat-value" data-target="150">0</div>
-                        <div class="stat-label">Active Users</div>
-                    </div>
+/* How It Works Section */
+.how-it-works-section {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 5rem 0;
+}
 
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i data-lucide="star"></i>
-                        </div>
-                        <div class="stat-value green" data-target="28.5">0</div>
-                        <div class="stat-label">Avg. Annual Return</div>
-                    </div>
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(90deg, #0f172a, #1e293b);
+    padding: 5rem 0;
+    text-align: center;
+}
 
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i data-lucide="globe"></i>
-                        </div>
-                        <div class="stat-value" data-target="180">0</div>
-                        <div class="stat-label">Countries Supported</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+.submit-button {
+    background-color: #2563eb;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
 
-        <!-- CTA Section -->
-        <section id="access" class="cta-section">
-            <div class="container">
-                <div class="cta-card">
-                    <div class="cta-overlay"></div>
-                    <div class="cta-radial"></div>
+.submit-button:hover {
+    background-color: #1d4ed8;
+}
 
-                    <div class="cta-content">
-                        <h2 class="cta-title">Ready to Get Started?</h2>
-                        <p class="cta-description">
-                            Join the Aurum ecosystem today and experience the future of intelligent financial management.
-                        </p>
+/* Responsive Design */
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+}
 
-                        <form 
-                            id="signup-form" 
-                            class="cta-form"
-                            action="https://formspree.io/f/mblzyeka"
-                            method="POST"
-                        >
-                            <div class="form-group">
-                                <input 
-                                    type="email" 
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    required
-                                    class="email-input"
-                                >
-                                <div class="magnetic-button">
-                                    <button type="submit" class="submit-button">
-                                        <div class="button-shine"></div>
-                                        Get Access
-                                        <i data-lucide="arrow-right" class="button-icon"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p class="form-note">
-                                By signing up, you agree to receive updates about the Aurum Foundation.
-                            </p>
-                        </form>
+@media (max-width: 767px) {
+    .flagship-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
 
-                        <div id="success-message" class="success-message hidden">
-                            <div class="success-content">
-                                <i data-lucide="check-circle-2" class="success-icon"></i>
-                                <h3 class="success-title">Success!</h3>
-                            </div>
-                            <p class="success-text">
-                                Thank you for your interest. Check your email for next steps to access the Aurum Foundation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <!-- Logo placeholder -->
-                    </div>
-
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Official Website</a>
-                        <a href="#" class="footer-link">Ecosystem</a>
-                    </div>
-
-                    <p class="footer-copyright">
-                        © 2025 How2EarnCrypto. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/lucide.min.js"></script>
-    <script>
-        // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            // Initialize animations
-            initAnimations();
-            initParticles();
-            initCounters();
-            initMagneticButtons();
-            initFormHandler();
-
-            // Add scroll event listener for animations
-            window.addEventListener('scroll', handleScroll);
-        });
-
-        // Animation initialization
-        function initAnimations() {
-            // Add visible class to feature cards with delay
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach(card => {
-                const delay = card.getAttribute('data-delay') || 0;
-                setTimeout(() => {
-                    card.classList.add('visible');
-                }, parseInt(delay));
-            });
-
-            // Add fade-in-up class to elements on load
-            const fadeElements = document.querySelectorAll('.fade-in-up');
-            fadeElements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            });
-        }
-
-        // Particle system
-        function initParticles() {
-            const particleContainer = document.getElementById('particleContainer');
-            if (!particleContainer) return;
-
-            // Create multiple particles
-            for (let i = 0; i < 15; i++) {
-                createParticle(particleContainer, i);
-            }
-        }
-
-        function createParticle(container, index) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // Random properties
-            const size = Math.random() * 2 + 1;
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            const duration = 20 + Math.random() * 20;
-            const delay = Math.random() * 20;
-            const color = Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.3)' : 'rgba(6, 182, 212, 0.3)';
-            
-            // Apply styles
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                background: ${color};
-                left: ${left}%;
-                top: ${top}%;
-                animation-duration: ${duration}s;
-                animation-delay: ${delay}s;
-            `;
-            
-            container.appendChild(particle);
-        }
-
-        // Counter animation
-        function initCounters() {
-            const counters = document.querySelectorAll('.stat-value');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = parseFloat(counter.getAttribute('data-target'));
-                        animateCounter(counter, target);
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            counters.forEach(counter => observer.observe(counter));
-        }
-
-        function animateCounter(element, target) {
-            const duration = 2000;
-            const steps = 60;
-            const increment = target / steps;
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target % 1 === 0 ? target.toFixed(0) : target.toFixed(1);
-                    clearInterval(timer);
-                } else {
-                    element.textContent = current % 1 === 0 ? current.toFixed(0) : current.toFixed(1);
-                }
-            }, duration / steps);
-        }
-
-        // Magnetic buttons
-        function initMagneticButtons() {
-            const magneticButtons = document.querySelectorAll('.magnetic-button');
-            
-            magneticButtons.forEach(button => {
-                button.addEventListener('mousemove', handleMagneticMove);
-                button.addEventListener('mouseleave', handleMagneticLeave);
-            });
-        }
-
-        function handleMagneticMove(e) {
-            const button = e.currentTarget;
-            const rect = button.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-            const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-            
-            button.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-
-        function handleMagneticLeave(e) {
-            const button = e.currentTarget;
-            button.style.transform = 'translate3d(0, 0, 0)';
-        }
-
-        // Form handler
-        function initFormHandler() {
-            const form = document.getElementById('signup-form');
-            const successMessage = document.getElementById('success-message');
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const submitButton = form.querySelector('.submit-button');
-                    const originalText = submitButton.innerHTML;
-                    
-                    // Show loading state
-                    submitButton.innerHTML = 'Processing...';
-                    submitButton.disabled = true;
-                    
-                    // Submit the form to Formspree
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            // Show success message
-                            form.style.display = 'none';
-                            successMessage.classList.remove('hidden');
-                            
-                            // Reset form
-                            form.reset();
-                            submitButton.innerHTML = originalText;
-                            submitButton.disabled = false;
-                        } else {
-                            response.json().then(data => {
-                                if (Object.hasOwn(data, 'errors')) {
-                                    alert(data["errors"].map(error => error["message"]).join(", "));
-                                } else {
-                                    alert("Oops! There was a problem submitting your form");
-                                }
-                            });
-                        }
-                    }).catch(error => {
-                        alert("Oops! There was a problem submitting your form");
-                    });
-                });
-            }
-        }
-
-        // Scroll animations
-        function handleScroll() {
-            const elements = document.querySelectorAll('.feature-card, .stat-card');
-            const windowHeight = window.innerHeight;
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
