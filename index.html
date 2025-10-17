@@ -234,44 +234,55 @@
     </section>
 
     <!-- Final CTA -->
-    <section id="signup-form" class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Stop Losing. Start Winning.</h2>
-                <p class="cta-description">
-                    Join 18,000+ smart investors who've discovered the safest way to profit from crypto.
-                </p>
+<section id="signup-form" class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Stop Losing. Start Winning.</h2>
+            <p class="cta-description">
+                Join 18,000+ smart investors who've discovered the safest way to profit from crypto.
+            </p>
+            
+            <div class="signup-form-container">
+                <div id="signup-form-card" class="signup-form">
+                    <h3 class="form-title">Get Started Free</h3>
+                    <form 
+                        id="email-form" 
+                        class="form"
+                        action="https://formspree.io/f/mblzyeka"
+                        method="POST"
+                    >
+                        <input
+                            type="email"
+                            id="email-input"
+                            name="email"
+                            placeholder="Enter your email address"
+                            class="email-input"
+                            required
+                        >
+                        <textarea 
+                            name="message" 
+                            placeholder="Your message (optional)"
+                            class="message-input"
+                            rows="3"
+                        ></textarea>
+                        <button type="submit" class="submit-button">
+                            Join 18,000+ Smart Investors →
+                        </button>
+                    </form>
+                    <p class="form-disclaimer">
+                        No credit card required. Start with any amount.
+                    </p>
+                </div>
                 
-                <div class="signup-form-container">
-                    <div id="signup-form-card" class="signup-form">
-                        <h3 class="form-title">Get Started Free</h3>
-                        <form id="email-form" class="form">
-                            <input
-                                type="email"
-                                id="email-input"
-                                placeholder="Enter your email address"
-                                class="email-input"
-                                required
-                            >
-                            <button type="submit" class="submit-button">
-                                Join 18,000+ Smart Investors →
-                            </button>
-                        </form>
-                        <p class="form-disclaimer">
-                            No credit card required. Start with any amount.
-                        </p>
-                    </div>
-                    
-                    <div id="success-message" class="success-message" style="display: none;">
-                        <div class="success-icon">✓</div>
-                        <h3 class="success-title">Welcome to Aurum!</h3>
-                        <p class="success-text">Check your email for next steps to start earning with AI.</p>
-                    </div>
+                <div id="success-message" class="success-message" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3 class="success-title">Welcome to Aurum!</h3>
+                    <p class="success-text">Check your email for next steps to start earning with AI.</p>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
