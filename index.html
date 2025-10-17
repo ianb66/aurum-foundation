@@ -318,10 +318,16 @@
     
     <script>
 document.getElementById('email-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // This prevents the default form submission
     
     const form = e.target;
     const formData = new FormData(form);
+    
+    // Show loading state (optional)
+    const submitButton = form.querySelector('.submit-button');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Submitting...';
+    submitButton.disabled = true;
     
     fetch(form.action, {
         method: 'POST',
@@ -332,6 +338,7 @@ document.getElementById('email-form').addEventListener('submit', function(e) {
     })
     .then(response => {
         if (response.ok) {
+            // Success - show your custom message
             document.getElementById('signup-form-card').style.display = 'none';
             document.getElementById('success-message').style.display = 'block';
             form.reset();
@@ -347,6 +354,11 @@ document.getElementById('email-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         alert('Oops! There was a problem submitting your form');
+    })
+    .finally(() => {
+        // Reset button state
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
     });
 });
 </body>
