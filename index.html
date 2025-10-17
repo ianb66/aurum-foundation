@@ -1,166 +1,309 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurum Foundation - Stop Losing Money in Crypto. Start Making It.</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="warning-badge">
+                    ⚠️ 73% of crypto investors lose money in their first year
+                </div>
+                <h1 class="hero-title">
+                    <span class="text-blue">Your Gateway to a Smarter Crypto Future</span>
+                </h1>
+                <p class="hero-description">
+                    Unlock the power of AI in crypto with Aurum
+                </p>
+                
+                <!-- Video Section -->
+                <div class="video-section">
+                    <h3 class="video-title">That's why we built Aurum Neobank</h3>
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9ceC7I0zErQ?si=4n6ERG1gQnbGwy1M" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    line-height: 1.6;
-    color: #374151;
-    background-color: #ffffff;
-}
+                <div class="social-proof-text">
+                    <strong>Join 18,000+ investors</strong> who've already discovered the safest way to profit from crypto
+                </div>
+            </div>
+        </div>
+    </section>
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
+    <!-- Social Proof Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number green">$30M+</div>
+                    <div class="stat-label">Protected & Growing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number blue">18,000+</div>
+                    <div class="stat-label">Happy Investors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number purple">24/7</div>
+                    <div class="stat-label">AI Working For You</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number yellow">3</div>
+                    <div class="stat-label">Global Licenses</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* Hero Section - Blue Gradient */
-.hero-section {
-    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-    padding: 5rem 0 8rem;
-    text-align: center;
-}
+    <!-- Complete Ecosystem -->
+    <section class="ecosystem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-subtitle">Complete Ecosystem</h2>
+                <h3 class="section-title">
+                    Six Powerful Products.
+                      
 
-.warning-badge {
-    background-color: #dbeafe;
-    color: #1e40af;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-weight: 600;
-}
+                    <span class="text-blue">One Unified Platform.</span>
+                </h3>
+                <p class="section-description">
+                    Everything you need to dominate the digital economy — all seamlessly integrated
+                </p>
+            </div>
 
-.text-blue {
-    color: #2563eb;
-}
+            <div class="products-grid">
+                <!-- NeoBank -->
+                <div class="product-card">
+                    <div class="product-icon green-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">NeoBank</h4>
+                    <p class="product-description">
+                        Web 3.0 banking platform seamlessly managing both crypto and fiat assets with institutional-grade security.
+                    </p>
+                </div>
 
-/* Video Section */
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-}
+                <!-- AI Trading Bots -->
+                <div class="product-card">
+                    <div class="product-icon blue-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">AI Trading Bots</h4>
+                    <p class="product-description">
+                        Advanced autonomous trading systems (EX-AI & Zeus AI ) that work 24/7 to optimize your portfolio performance.
+                    </p>
+                </div>
 
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
+                <!-- Flash Loans -->
+                <div class="product-card">
+                    <div class="product-icon purple-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">Flash Loans</h4>
+                    <p class="product-description">
+                        AI-powered arbitrage trading that capitalizes on market inefficiencies for consistent returns.
+                    </p>
+                </div>
 
-/* Stats Section - Colorful Stats */
-.stats-section {
-    background-color: #1e293b;
-    color: white;
-    padding: 3rem 0;
-}
+                <!-- Crypto Cards -->
+                <div class="product-card">
+                    <div class="product-icon yellow-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">Crypto Cards</h4>
+                    <p class="product-description">
+                        Spend your cryptocurrency anywhere in the world with instant conversion and global acceptance.
+                    </p>
+                    <span class="launching-badge">Launching Soon</span>
+                </div>
 
-.stat-number.green { color: #4ade80; }
-.stat-number.blue { color: #60a5fa; }
-.stat-number.purple { color: #a78bfa; }
-.stat-number.yellow { color: #facc15; }
+                <!-- DEX Exchange -->
+                <div class="product-card">
+                    <div class="product-icon orange-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">DEX Exchange</h4>
+                    <p class="product-description">
+                        Decentralized trading platform with deep liquidity and seamless swaps across multiple blockchains.
+                    </p>
+                    <span class="launching-badge">Launching Soon</span>
+                </div>
 
-/* Product Cards - Colorful Icons */
-.green-icon { background: linear-gradient(135deg, #4ade80, #22c55e); }
-.blue-icon { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
-.purple-icon { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
-.yellow-icon { background: linear-gradient(135deg, #facc15, #eab308); }
-.orange-icon { background: linear-gradient(135deg, #fb923c, #f97316); }
-.indigo-icon { background: linear-gradient(135deg, #818cf8, #6366f1); }
+                <!-- AURUM Token -->
+                <div class="product-card">
+                    <div class="product-icon indigo-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h4 class="product-title">AURUM Token</h4>
+                    <p class="product-description">
+                        Utility token powering the entire ecosystem with exclusive benefits, rewards, and governance rights.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.product-card {
-    background-color: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #dbeafe;
-}
+    <!-- Flagship Product - EX-AI Bot -->
+    <section class="flagship-section">
+        <div class="container">
+            <div class="flagship-content">
+                <div class="flagship-text">
+                    <div class="flagship-badge">🚀 Flagship Product</div>
+                    <h2 class="flagship-title">AURUM EX-AI BOT</h2>
+                    <p class="flagship-description">
+                        Earn on the crypto market with <strong>zero stress and minimal risk</strong> – the autonomous bot analyzes the market, executes trades, and maximizes your profits while you sleep.
+                    </p>
+                    
+                    <div class="performance-stats">
+                        <div class="performance-grid">
+                            <div class="performance-item">
+                                <div class="performance-number">1.5 Years</div>
+                                <div class="performance-label">Stable Performance</div>
+                            </div>
+                            <div class="performance-item">
+                                <div class="performance-number">+18.5%</div>
+                                <div class="performance-label">Avg Monthly Return</div>
+                            </div>
+                        </div>
+                    </div>
 
-/* Flagship Section - Blue Gradient */
-.flagship-section {
-    background: linear-gradient(90deg, #2563eb, #3730a3);
-    padding: 5rem 0;
-    color: white;
-}
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <span><strong>24/7 Autonomous Trading</strong> - Never misses an opportunity</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <span><strong>Advanced Risk Management</strong> - Strict protocols protect your capital</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <span><strong>Real-Time Dashboard</strong> - Track profits and monitor results live</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flagship-image">
+                    <img src="dashboard.png" alt="AURUM EX-AI Bot Dashboard - Real trading interface" class="dashboard-image">
+                </div>
+            </div>
+        </div>
+    </section>
 
-.dashboard-image {
-    border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    height: auto;
-}
+    <!-- How It Works -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">From Zero to Profit in 3 Simple Steps</h2>
+                <p class="section-description">
+                    No complex setups. No trading experience needed. Just results.
+                </p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number red-step">1</div>
+                    <h3 class="step-title">Sign Up</h3>
+                    <p class="step-description">Create your account in 2 minutes. No credit card required to start.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number amber-step">2</div>
+                    <h3 class="step-title">Fund & Activate</h3>
+                    <p class="step-description">Deposit funds and let our AI start working immediately. Start with any amount.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number green-step">3</div>
+                    <h3 class="step-title">Watch It Grow</h3>
+                    <p class="step-description">Sit back and watch your wealth grow while AI handles everything 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* Traffic Light Step Colors */
-.red-step { background: linear-gradient(135deg, #ef4444, #dc2626); }
-.amber-step { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.green-step { background: linear-gradient(135deg, #10b981, #059669); }
+    <!-- Final CTA -->
+    <section id="signup-form" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Stop Losing. Start Winning.</h2>
+                <p class="cta-description">
+                    Join 18,000+ smart investors who've discovered the safest way to profit from crypto.
+                </p>
+                
+                <div class="signup-form-container">
+                    <div id="signup-form-card" class="signup-form">
+                        <h3 class="form-title">Get Started Free</h3>
+                        <form id="email-form" class="form">
+                            <input
+                                type="email"
+                                id="email-input"
+                                placeholder="Enter your email address"
+                                class="email-input"
+                                required
+                            >
+                            <button type="submit" class="submit-button">
+                                Join 18,000+ Smart Investors →
+                            </button>
+                        </form>
+                        <p class="form-disclaimer">
+                            No credit card required. Start with any amount.
+                        </p>
+                    </div>
+                    
+                    <div id="success-message" class="success-message" style="display: none;">
+                        <div class="success-icon">✓</div>
+                        <h3 class="success-title">Welcome to Aurum!</h3>
+                        <p class="success-text">Check your email for next steps to start earning with AI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.step-number {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    margin: 0 auto 1.5rem;
-}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    © 2025 How2EarnCrypto. All Rights Reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="https://aurum.foundation/" class="footer-link">Main Website</a>
+                    <button onclick="document.getElementById('signup-form' ).scrollIntoView({behavior: 'smooth'})" class="footer-link footer-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-/* How It Works Section */
-.how-it-works-section {
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    padding: 5rem 0;
-}
+    <script>
+        // Email form functionality
+        document.getElementById('email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email-input').value;
+            if (email) {
+                document.getElementById('signup-form-card').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }
+        });
 
-/* CTA Section */
-.cta-section {
-    background: linear-gradient(90deg, #0f172a, #1e293b);
-    padding: 5rem 0;
-    text-align: center;
-}
-
-.submit-button {
-    background-color: #2563eb;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #1d4ed8;
-}
-
-/* Responsive Design */
-@media (min-width: 768px) {
-    .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .hero-title {
-        font-size: 4rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .flagship-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-}
+        // Smooth scroll for footer button
+        function scrollToSignup() {
+            document.getElementById('signup-form').scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
 
