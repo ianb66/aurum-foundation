@@ -1,1 +1,53 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Financial Future Starts Here</title>
+    <link rel="stylesheet" href="bridge-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="attention-banner">
+            ⚡ Attention Marketers, Affiliates & Entrepreneurs! ⚡
+        </div>
+        
+        <h1>Make Money While You Sleep</h1>
+        
+        <p class="subtitle">
+            Discover the breakthrough system that's creating wealth for thousands—automatically
+        </p>
+        
+        <div class="form-box">
+            <form id="emailForm" action="index.html" method="GET">
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    placeholder="Enter your email address" 
+                    required
+                />
+                <button type="submit" class="cta-button">
+                    Show Me How →
+                </button>
+            </form>
+            
+            <p class="privacy-text">
+                🔒 <strong>Your privacy is 100% protected.</strong><br>
+                We respect your inbox. No spam, ever. Unsubscribe anytime.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value;
+            
+            // Optional: Send to your email capture service here
+            console.log('Email captured:', email);
+            
+            // Form will redirect to index.html (your sales page)
+        });
+    </script>
+</body>
+</html>
