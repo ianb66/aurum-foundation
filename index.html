@@ -19,7 +19,18 @@
         </p>
         
         <div class="form-box">
-            <form id="emailForm" action="sales.html" method="GET">
+            <form method="post" action="https://www.aweber.com/scripts/addlead.pl" accept-charset="UTF-8">
+                <!-- AWeber Hidden Fields -->
+                <input type="hidden" name="meta_web_form_id" value="305431064" />
+                <input type="hidden" name="meta_split_id" value="" />
+                <input type="hidden" name="listname" value="awlist6931326" />
+                <input type="hidden" name="redirect" value="https://how2earncrypto.com/sales.html" />
+                <input type="hidden" name="meta_adtracking" value="Aurum_Bridge_Page_Form" />
+                <input type="hidden" name="meta_message" value="1" />
+                <input type="hidden" name="meta_required" value="email" />
+                <input type="hidden" name="meta_tooltip" value="" />
+                
+                <!-- Email Input -->
                 <input 
                     type="email" 
                     name="email" 
@@ -27,6 +38,8 @@
                     placeholder="Enter your email address" 
                     required
                 />
+                
+                <!-- Submit Button -->
                 <button type="submit" class="cta-button">
                     Show Me How →
                 </button>
@@ -38,16 +51,5 @@
             </p>
         </div>
     </div>
-    
-    <script>
-        document.getElementById('emailForm').addEventListener('submit', function(e) {
-            const email = document.getElementById('email').value;
-            
-            // Optional: Send to your email capture service here
-            console.log('Email captured:', email);
-            
-            // Form will redirect to index.html (your sales page)
-        });
-    </script>
 </body>
 </html>
