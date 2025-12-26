@@ -29,6 +29,25 @@
             opacity: 0.95;
         }
         
+        /* Highlighted US Residents Text */
+        .us-highlight {
+            color: #fbbf24;
+            font-weight: 700;
+            animation: gentlePulse 2s ease-in-out infinite;
+        }
+        
+        /* Gentle pulse animation */
+        @keyframes gentlePulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.85;
+                transform: scale(1.05);
+            }
+        }
+        
         /* VPN Notice Before Button */
         .vpn-button-notice {
             background: #eff6ff;
@@ -49,6 +68,11 @@
         .vpn-button-notice .vpn-icon {
             font-size: 1.2em;
             margin-right: 8px;
+        }
+        
+        .vpn-button-notice .us-button-highlight {
+            color: #059669;
+            font-weight: 700;
         }
         
         /* Mobile Responsive */
@@ -79,7 +103,7 @@
     <!-- VPN Notice Banner - TOP OF PAGE -->
     <div class="vpn-notice-banner">
         <strong>🌍 WORLDWIDE OPPORTUNITY - AVAILABLE IN 20+ LANGUAGES</strong>
-        <p>This platform is open and available to U.S. residents with the use of a VPN. Accessible globally with multilingual support.</p>
+        <p><span class="us-highlight">Open to U.S. residents with VPN</span> • Accessible globally with multilingual support</p>
     </div>
 
     <!-- Hero Section -->
@@ -323,7 +347,7 @@
                     
                     <!-- VPN Notice Before Button -->
                     <div class="vpn-button-notice">
-                        <p><span class="vpn-icon">🌐</span><strong>U.S. Residents Welcome:</strong> Platform accessible with VPN • Available in 20+ Languages Worldwide</p>
+                        <p><span class="vpn-icon">🌐</span><span class="us-button-highlight">U.S. Residents Welcome with VPN</span> • Available in 20+ Languages Worldwide</p>
                     </div>
                     
                     <form 
